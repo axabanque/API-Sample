@@ -10,15 +10,15 @@
 </p>
 <br />
 
+<p>
+	<strong>Current Page : </strong>${page}
+</p>
 <div class="pagination">
-	<ul>
-		<li><a href="#">Prev</a></li>
-		<li class="active"><a href="#">1</a></li>
-		<li><a href="#">2</a></li>
-		<li><a href="#">3</a></li>
-		<li><a href="#">4</a></li>
-		<li><a href="#">Next</a></li>
+	<ul class="pager">
+		<li><a href="${pageContext.request.contextPath}/accounts/show/${accountId}/page/${page > 1? page - 1: page}"">Previous</a></li>
+		<li><a href="${pageContext.request.contextPath}/accounts/show/${accountId}/page/${page + 1}"">Next</a></li>
 	</ul>
+
 </div>
 
 <table class="table table-striped table-bordered table-condensed">

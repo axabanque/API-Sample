@@ -18,10 +18,10 @@ public class TransactionDAO {
 	
 	private RestTemplate restTemplate = new RestTemplate();
 	
-	public List<Transaction> getTransactionList(String accountId, String customerId) {
+	public List<Transaction> getTransactionList(String accountId, String customerId, String page) {
 		Transaction [] transactions = restTemplate.getForObject(baseUrl 
-				+ "accounts/{accountId}/transactions?client_id={clientId}&access_token={accessToken}&customer_id={customerId}", 
-				Transaction[].class, accountId,SimplePfmConstant.CLIENT_ID, SimplePfmConstant.ACCESS_TOKEN, customerId);	
+				+ "accounts/{accountId}/transactions?client_id={clientId}&access_token={accessToken}&customer_id={customerId}&count={count}&page={page}", 
+				Transaction[].class, accountId,SimplePfmConstant.CLIENT_ID, SimplePfmConstant.ACCESS_TOKEN, customerId, SimplePfmConstant.PAGE_SIZE, page);	
 		return Arrays.asList(transactions);
 	}
 

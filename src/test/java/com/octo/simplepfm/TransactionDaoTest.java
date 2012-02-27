@@ -19,7 +19,7 @@ public class TransactionDaoTest extends BaseSpringConfiguration {
 	public void testTransactionListOk() {
 		final String accountId = "20000001500";
 		final String customerId= "1000000";
-		List<Transaction> transactionList = transactionDao.getTransactionList(accountId,customerId);
+		List<Transaction> transactionList = transactionDao.getTransactionList(accountId,customerId, "1");
 		assertTrue(transactionList.size() > 0);
 		for (Transaction t : transactionList) {
 			System.out.println(t.getLabel());
