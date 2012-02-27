@@ -2,7 +2,7 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <jsp:include page="/jsp/header.jsp" />
 
-	<form:form method="POST" action="/simple-pfm/customer/customerAccounts" commandName="customerChoosed" class="well">
+	<form:form method="POST" action="${pageContext.request.contextPath}/customer/customerAccounts" commandName="customerChoosed" class="well">
 	
 	<label>Choose a customer Id : </label>
 	<form:select name="customerIdChoose" path="customerId">

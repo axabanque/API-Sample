@@ -22,10 +22,10 @@ body {
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="/simple-pfm/">Simple PFM</a>
+          <a class="brand" href="${pageContext.request.contextPath}/">Simple PFM</a>
           <div class="nav-collapse">
             <ul class="nav">
-              <li class="active"><a href="/simple-pfm/">Home</a></li>
+              <li class="active"><a href="${pageContext.request.contextPath}/">Home</a></li>
               <!--   <li><a href="#">Accounts</a></li>-->
             </ul>
           </div><!--/.nav-collapse -->

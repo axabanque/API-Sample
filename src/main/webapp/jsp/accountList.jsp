@@ -17,7 +17,7 @@
 		<c:forEach items="${accounts}" var="account">
 			<tr>
 				<td>${account.label}</td>
-				<td><a href="/simple-pfm/accounts/show/${account.account}">${account.account}</a></td>
+				<td><a href="${pageContext.request.contextPath}/accounts/show/${account.account}">${account.account}</a></td>
 			</tr>
 		</c:forEach>
 	</table>

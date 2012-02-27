@@ -10,6 +10,6 @@ Choose a customer and play with its accounts <br />
 </p>
 
 	
-<a href="/simple-pfm/customer/select" class="btn btn-primary">Choose a customer</a>
+<a href="customer/select" class="btn btn-primary">Choose a customer</a>
 
 <jsp:include page="/jsp/footer.jsp" />
