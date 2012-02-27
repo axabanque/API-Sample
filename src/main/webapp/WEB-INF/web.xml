@@ -5,10 +5,13 @@
     xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
     id="WebApp_ID" version="2.5">
     
-    <display-name>Spring3-Hibernate</display-name>
+    <display-name>SimplePfm</display-name>
     <welcome-file-list>
-        <welcome-file>list.html</welcome-file>
+        <welcome-file>jsp/index.jsp</welcome-file>
     </welcome-file-list>
+    <listener>
+    	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
 
    <servlet>
         <servlet-name>dispatcher</servlet-name>

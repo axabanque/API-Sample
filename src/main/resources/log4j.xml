@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding= "UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+      <appender name="stdout" class="org.apache.log4j.ConsoleAppender">
+            <layout class="org.apache.log4j.PatternLayout">
+                  <param name="ConversionPattern" value="%d %p [%c] - &lt;%m&gt;%n"/>
+            </layout>
+      </appender>
+
+      <appender name="logfile" class="org.apache.log4j.RollingFileAppender">
+
+            <param name="Threshold" value="DEBUG"/>
+            <param name="Append" value="true"/>
+            <param name="MaxFileSize" value="512KB"/>
+            <param name="MaxBackupIndex" value="5"/>
+            <param name="ImmediateFlush" value="true"/>
+
+            <!-- file parameter is taken from the XML fragment, which is environment-specific -->
+            <param name="File" value="simplepfm.log"/> 
+
+            <layout class="org.apache.log4j.PatternLayout">
+                  <param name="ConversionPattern" value="%d %p [%c] - %m%n"/>
+            </layout>
+      </appender>
+
+      <logger name="org.springframework">
+            <level value="info"/>
+            <appender-ref ref="logfile"/>
+            <appender-ref ref="stdout"/>
+      </logger>
+
+      <root>
+            <priority value="debug"/>
+            <appender-ref ref="stdout"/>
+      </root>
+
+</log4j:configuration>
