@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.octo.simplepfm.dao.TransactionDAO;
-import com.octo.simplepfm.helpers.SimplePfmConstant;
 import com.octo.simplepfm.model.Transaction;
 
 @RequestMapping("/accounts")
@@ -27,7 +26,7 @@ public class AccountController {
 	public ModelAndView showTransactions(@PathVariable String accountId, HttpServletRequest request, final HttpSession httpSession) {
 		String customerId = (String) httpSession.getAttribute("customerId");
 		if (customerId != null) {
-			List<Transaction> transactionList = transactionDao.getTransactionList(accountId, customerId, SimplePfmConstant.SINCE_ID);
+			List<Transaction> transactionList = transactionDao.getTransactionList(accountId, customerId);
 			System.out.println("Customer Id : " + customerId);
 			ModelMap map = new ModelMap();
 			map.put("transactions", transactionList);

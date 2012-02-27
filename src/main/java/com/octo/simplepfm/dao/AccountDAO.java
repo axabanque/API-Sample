@@ -3,7 +3,6 @@ package com.octo.simplepfm.dao;
 import java.util.Arrays;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.client.RestTemplate;
@@ -19,8 +18,8 @@ public class AccountDAO {
 	
 	private RestTemplate restTemplate = new RestTemplate();
 	
-	public List<AccountSummary> getAccountListForCustomer(String customerId, String sinceId) {
-		AccountSummary [] accounts = restTemplate.getForObject(baseUrl +"/customers/{customerId}/accounts?client_id={clientId}&access_token={accessToken}&since_id=2000300&customer_id={customerId}", 
+	public List<AccountSummary> getAccountListForCustomer(String customerId) {
+		AccountSummary [] accounts = restTemplate.getForObject(baseUrl +"/customers/{customerId}/accounts?client_id={clientId}&access_token={accessToken}&customer_id={customerId}", 
 				AccountSummary[].class, 
 				customerId, SimplePfmConstant.CLIENT_ID, SimplePfmConstant.ACCESS_TOKEN, customerId);
 		
@@ -28,10 +27,10 @@ public class AccountDAO {
 	}
 	
 	
-	public Account getAccountById(String accountId, String sinceId, String customerId) {
-		Account account = restTemplate.getForObject(baseUrl + "/accounts/{accountId}?client_id={clientId}&access_token={accessToken}&since_id={sinceId}&customer_id={customerId}",
+	public Account getAccountById(String accountId,String customerId) {
+		Account account = restTemplate.getForObject(baseUrl + "/accounts/{accountId}?client_id={clientId}&access_token={accessToken}&customer_id={customerId}",
 				Account.class,
-				accountId,SimplePfmConstant.CLIENT_ID, SimplePfmConstant.ACCESS_TOKEN, sinceId, customerId);
+				accountId,SimplePfmConstant.CLIENT_ID, SimplePfmConstant.ACCESS_TOKEN, customerId);
 		
 		return account;
 	}

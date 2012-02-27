@@ -1,10 +1,5 @@
 package com.octo.simplepfm.model;
 
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
-//@XmlRootElement
-//@XmlType(propOrder = {"id", "customer", "label", "currency" })
 public class Account {
 	private Long id;
 	

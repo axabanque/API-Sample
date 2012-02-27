@@ -16,7 +16,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.octo.simplepfm.dao.AccountDAO;
 import com.octo.simplepfm.form.ChooseCustomer;
-import com.octo.simplepfm.helpers.SimplePfmConstant;
 import com.octo.simplepfm.model.AccountSummary;
 
 @RequestMapping("/customer")
@@ -39,7 +38,7 @@ public class CustomerController {
 	    public ModelAndView display(@ModelAttribute("choosecustomer") ChooseCustomer chooseCustomer, Model model, final HttpSession httpSession) {
 	    	String customerId = chooseCustomer.getCustomerId();
 	    	httpSession.setAttribute("customerId", customerId);
-	    	List<AccountSummary> accountList = accountDao.getAccountListForCustomer(customerId, SimplePfmConstant.SINCE_ID);
+	    	List<AccountSummary> accountList = accountDao.getAccountListForCustomer(customerId);
 			ModelMap map = new ModelMap();
 			map.put("accounts",accountList);
 			map.put("customerId", customerId);
