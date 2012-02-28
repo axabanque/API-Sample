@@ -32,7 +32,7 @@ public class AccountDAOTestIntegration extends BaseSpringConfiguration {
 	
 	@Test
 	public void testGetListOfAccountWithRestTemplate() {
-		String customerId = "1000000";
+		String customerId = "1500000";
 		List<AccountSummary> accountList = accountDao.getAccountListForCustomer(customerId);
 		assertTrue(accountList.size() > 0);
 		for (AccountSummary summary : accountList) {
