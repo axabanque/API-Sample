@@ -9,6 +9,7 @@ body {
 	padding-top: 60px;
 }
 </style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap-responsive.css" type="text/css" media="screen, projection" />
 </head>
 

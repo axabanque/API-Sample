@@ -12,12 +12,16 @@
 		<tr>
 			<th>Label</th>
 			<th>Account Number</th>
+			<th>Amount</th>
+			<th>Balances</th>
 		</tr>
 		</thead>
 		<c:forEach items="${accounts}" var="account">
 			<tr>
 				<td>${account.label}</td>
 				<td><a href="${pageContext.request.contextPath}/accounts/show/${account.account}/page/1">${account.account}</a></td>
+				<td>${account.amount}</td>
+				<td><a href="${pageContext.request.contextPath}/balances/show/${account.account}">Show balances for this account</a></td>
 			</tr>
 		</c:forEach>
 	</table>

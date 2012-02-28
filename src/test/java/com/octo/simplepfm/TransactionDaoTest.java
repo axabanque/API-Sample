@@ -33,9 +33,9 @@ public class TransactionDaoTest {
 		transactionListMock.add(new Transaction());
 		transactionListMock.add(new Transaction());
 		transactionListMock.add(new Transaction());
-		Function setLabelFunction = new Function() {
+		Function<Transaction, Transaction> setLabelFunction = new Function<Transaction, Transaction>() {
             @Override
-            public Object apply(Object o) {
+            public Transaction apply(Transaction o) {
                 if (o == null) {
                     return null;
                 }

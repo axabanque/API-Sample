@@ -12,28 +12,25 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.octo.simplepfm.dao.TransactionDAO;
-import com.octo.simplepfm.model.Transaction;
+import com.octo.simplepfm.dao.BalanceDAO;
+import com.octo.simplepfm.model.Balance;
 
-@RequestMapping("/accounts")
+@RequestMapping("/balances")
 @Controller
-public class AccountController {
-
+public class BalancesController {
 	@Autowired
-	private TransactionDAO transactionDao;
+	private BalanceDAO balancesDao;
 
-	@RequestMapping(value = "/show/{accountId}/page/{page}")
-	public ModelAndView showTransactions(@PathVariable String accountId, @PathVariable String page, HttpServletRequest request, final HttpSession httpSession) {
+	@RequestMapping(value = "/show/{accountId}")
+	public ModelAndView showTransactions(@PathVariable String accountId, HttpServletRequest request, final HttpSession httpSession) {
 		String customerId = (String) httpSession.getAttribute("customerId");
 		if (customerId != null) {
-			List<Transaction> transactionList = transactionDao.getTransactionList(accountId, customerId, page);
-			System.out.println("Customer Id : " + customerId);
+			List<Balance> balanceList = balancesDao.getBalanceListForAccount(accountId, customerId);
 			ModelMap map = new ModelMap();
-			map.put("transactions", transactionList);
+			map.put("balances", balanceList);
+			map.put("customerId", customerId);
 			map.put("accountId", accountId);
-			map.put("page", page);
-			
-			return new ModelAndView("transactionList", map);
+			return new ModelAndView("balanceList", map);
  		} else {
  			throw new RuntimeException("Customer Id not present in session");
  		}

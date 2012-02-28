@@ -7,16 +7,18 @@ public class Balance {
 	
 	private Long id;
 
-	private BigDecimal value;
+	private BigDecimal amount;
 	private Date date;
+	
+	private String currency;
 
-	private Account account;
+	private Long account;
 
 	public Balance() {
 	}
 
-	public Balance(BigDecimal value, Date date, Account account) {
-		this.value = value;
+	public Balance(BigDecimal value, Date date, Long account) {
+		this.amount = value;
 		this.date = date;
 		this.account = account;
 	}
@@ -29,12 +31,13 @@ public class Balance {
 		// publicId mapped to Id
 	}
 
-	public BigDecimal getValue() {
-		return value;
+
+	public BigDecimal getAmount() {
+		return amount;
 	}
 
-	public void setValue(BigDecimal value) {
-		this.value = value;
+	public void setAmount(BigDecimal amount) {
+		this.amount = amount;
 	}
 
 	public Date getDate() {
@@ -45,15 +48,13 @@ public class Balance {
 		this.date = date;
 	}
 	
-	public String getCurrency() {
-		return account.getCurrency();
-	}	
 
-	public Account getAccount() {
+
+	public Long getAccount() {
 		return account;
 	}
 
-	public void setAccount(Account account) {
+	public void setAccount(Long account) {
 		this.account = account;
 	}
 
@@ -63,6 +64,14 @@ public class Balance {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public String getCurrency() {
+		return currency;
+	}
+
+	public void setCurrency(String currency) {
+		this.currency = currency;
 	}
 	
 	
