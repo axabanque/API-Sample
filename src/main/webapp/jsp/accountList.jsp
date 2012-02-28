@@ -7,6 +7,12 @@
 		<strong>Customer :</strong> ${customerId}
 	</p>
 
+	<p>
+		<i>Click on account number to see transactions</i>
+		<br/>
+		<i>Click on "Balances in time" to see graphic of your balances in time</i>
+	</p>
+
 	<table class="table table-striped table-bordered table-condensed">
 		<thead>
 		<tr>
@@ -21,7 +27,7 @@
 				<td>${account.label}</td>
 				<td><a href="${pageContext.request.contextPath}/accounts/show/${account.account}/page/1">${account.account}</a></td>
 				<td>${account.amount}</td>
-				<td><a href="${pageContext.request.contextPath}/balances/show/${account.account}">Show balances for this account</a></td>
+				<td><a href="${pageContext.request.contextPath}/balances/show/${account.account}">Balances in time</a></td>
 			</tr>
 		</c:forEach>
 	</table>

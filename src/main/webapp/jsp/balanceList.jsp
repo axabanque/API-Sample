@@ -1,7 +1,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <jsp:include page="/jsp/header.jsp" />
 
-<h2>balance List</h2>
+<h2>Balance List</h2>
+
+<br />
+<a href="javascript:history.go(-1)">Go Back to list of accounts</a>
+<br />
+
 <p>
 	<strong>Customer :</strong> ${customerId}
 </p>
@@ -10,57 +15,40 @@
 </p>
 <br />
 
-
-
-<script src="http://code.highcharts.com/stock/highstock.js"></script>
-<script src="http://code.highcharts.com/stock/modules/exporting.js"></script>
-<h2>Your balances in the time ..</h2>
 <br />
-<div id="container" style="height: 500px; min-width: 500px"></div>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Date');
+        data.addColumn('number', 'Amount');
+        <c:forEach items="${balances}" var="balance" varStatus="loop">
+                data.addRows([['${balance.date}',${balance.amount}]]);
+                </c:forEach>
+        var options = {
+          title: 'Your balances in time ...',
+          hAxis: {title: 'Date',  titleTextStyle: {color: 'black'}}
+        };
+        var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
+<div id="chart_div" style="width: 900px; height: 500px;"></div>
+<br /><br />
 
-<script type="text/javascript">
-$(function() {
-
-    $.getJSON('http://www.highcharts.com/samples/data/jsonp.php?filename=aapl-c.json&callback=?', function(data) {
-        // Create the chart
-        window.chart = new Highcharts.StockChart({
-            chart : {
-                renderTo : 'container'
-            },
-
-            rangeSelector : {
-                selected : 1
-            },
-
-            title : {
-                text : 'Your balances in times'
-            },
-            
-            series : [{
-                name : 'AAPL',
-                data : data,
-                tooltip: {
-                    valueDecimals: 2
-                }
-            }]
-        });
-    });
-
-});
-</script>
 
 <table class="table table-striped table-bordered table-condensed">
 	<thead>
 		<tr>
-			<th>account</th>
-			<th>date</th>
-			<th>amount</th>
-			<th>currency</th>
+			<th>Date</th>
+			<th>Amount</th>
+			<th>Currency</th>
 		</tr>
 	</thead>
 	<c:forEach items="${balances}" var="balance">
 		<tr>
-			<td>${balance.account}</td>
 			<td>${balance.date}</td>
 			<td>${balance.amount}</td>
 			<td>${balance.currency}</td>

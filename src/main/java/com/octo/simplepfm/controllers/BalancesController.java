@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.common.collect.Lists;
 import com.octo.simplepfm.dao.BalanceDAO;
 import com.octo.simplepfm.model.Balance;
 
@@ -22,17 +23,18 @@ public class BalancesController {
 	private BalanceDAO balancesDao;
 
 	@RequestMapping(value = "/show/{accountId}")
-	public ModelAndView showTransactions(@PathVariable String accountId, HttpServletRequest request, final HttpSession httpSession) {
+	public ModelAndView getBalances(@PathVariable String accountId,
+			HttpServletRequest request, final HttpSession httpSession) {
 		String customerId = (String) httpSession.getAttribute("customerId");
 		if (customerId != null) {
 			List<Balance> balanceList = balancesDao.getBalanceListForAccount(accountId, customerId);
 			ModelMap map = new ModelMap();
-			map.put("balances", balanceList);
+			map.put("balances", Lists.reverse(balanceList));
 			map.put("customerId", customerId);
 			map.put("accountId", accountId);
 			return new ModelAndView("balanceList", map);
- 		} else {
- 			throw new RuntimeException("Customer Id not present in session");
- 		}
+		} else {
+			throw new RuntimeException("Customer Id not present in session");
+		}
 	}
 }

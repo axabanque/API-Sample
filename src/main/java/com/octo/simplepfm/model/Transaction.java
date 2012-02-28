@@ -45,7 +45,6 @@ public class Transaction {
 
 	private String internationalTransaction;
 
-	private IBAN receiverAccount;
 
 	public Transaction() {
 	}
@@ -81,9 +80,6 @@ public class Transaction {
 		return account;
 	}
 
-	public void setReceiverAccount(IBAN receiverAccount) {
-		this.receiverAccount = receiverAccount;
-	}
 
 	public void setCardNumber(String cardNumber) {
 		this.cardNumber = cardNumber;
@@ -197,13 +193,6 @@ public class Transaction {
 		this.internationalTransaction = internationalTransaction;
 	}
 
-	public String getReceiverAccount() {
-		if (receiverAccount == null)
-			return null;
-
-		return receiverAccount.getCountryCode() + receiverAccount.getKey()
-				+ receiverAccount.getBbanCode();
-	}
 
 	public String getCardNumber() {
 		return cardNumber;

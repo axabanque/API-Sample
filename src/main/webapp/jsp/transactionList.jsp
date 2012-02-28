@@ -3,6 +3,9 @@
 
 <h2>Transaction List</h2>
 <p>
+<a href="javascript:history.go(-1)">Go Back to list of accounts</a>
+</p>
+<p>
 	<strong>Customer :</strong> ${customerId}
 </p>
 <p>
