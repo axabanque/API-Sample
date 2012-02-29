@@ -6,3 +6,4 @@ target/
 simplepfm.properties
 tests.txt
 *.log
+jenkins/
