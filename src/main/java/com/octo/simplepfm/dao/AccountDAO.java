@@ -3,6 +3,7 @@ package com.octo.simplepfm.dao;
 import java.util.Arrays;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
@@ -14,6 +15,8 @@ import com.octo.simplepfm.model.Balance;
 
 @Repository
 public class AccountDAO {
+	
+	private Logger logger  = Logger.getLogger(getClass());
 	
 	@Value("${base_url}")
 	private String baseUrl;
@@ -33,6 +36,7 @@ public class AccountDAO {
 		AccountSummary [] accounts = restTemplate.getForObject(baseUrl +"/customers/{customerId}/accounts?client_id={clientId}&access_token={accessToken}&customer_id={customerId}", 
 				AccountSummary[].class, 
 				customerId, clientId, accessToken, customerId);
+		logger.debug("CLIENT ID : " + clientId + " ACCESS TOKEN" + accessToken);
 		List<AccountSummary> accountList = Arrays.asList(accounts);
 		for (AccountSummary acc : accountList) {
 			Balance b = balanceDAO.getBalanceForAccount(String.valueOf(acc.getAccount()), customerId);
