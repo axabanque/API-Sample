@@ -17,8 +17,8 @@ public class Transaction {
 	@JsonProperty(value = "date")
 	private Date entryDate;
 
-	@JsonProperty(value = "value_date")
-	private Date valueDate;
+	@JsonProperty(value = "accounting_date")
+	private Date accountingDate;
 
 	private String label;
 
@@ -56,7 +56,7 @@ public class Transaction {
 		this.label = label;
 		this.amount = amount;
 		this.currency = currency;
-		this.entryDate = this.valueDate = date;
+		this.entryDate = this.accountingDate = date;
 		this.account = account;
 	}
 
@@ -133,12 +133,12 @@ public class Transaction {
 		this.foreignCurrency = currency;
 	}
 
-	public Date getValueDate() {
-		return valueDate;
+	public Date getAccountingDate() {
+		return accountingDate;
 	}
 
-	public void setValueDate(Date date) {
-		this.valueDate = date;
+	public void setAccountingDate(Date date) {
+		this.accountingDate = date;
 	}
 
 	public void setAccount(Long account) {
