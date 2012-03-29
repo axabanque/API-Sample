@@ -3,7 +3,7 @@
 
 <h2>Transaction List</h2>
 <p>
-<a href="javascript:history.go(-1)">Go Back to list of accounts</a>
+<a href="${pageContext.request.contextPath}/customer/${customerId}">Go Back to list of accounts</a>
 </p>
 <p>
 	<strong>Customer :</strong> ${customerId}
@@ -18,8 +18,8 @@
 </p>
 <div class="pagination">
 	<ul class="pager">
-		<li><a href="${pageContext.request.contextPath}/accounts/show/${accountId}/page/${page > 1? page - 1: page}"">Previous</a></li>
-		<li><a href="${pageContext.request.contextPath}/accounts/show/${accountId}/page/${page + 1}"">Next</a></li>
+		<li><a href="${pageContext.request.contextPath}/customer/${customerId}/accounts/show/${accountId}/page/${page > 1? page - 1: page}"">Previous</a></li>
+		<li><a href="${pageContext.request.contextPath}/customer/${customerId}/accounts/show/${accountId}/page/${page + 1}"">Next</a></li>
 	</ul>
 
 </div>

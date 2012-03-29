@@ -4,7 +4,7 @@
 <h2>Balance List</h2>
 
 <br />
-<a href="javascript:history.go(-1)">Go Back to list of accounts</a>
+<a href="${pageContext.request.contextPath}/customer/${customerId}">Go Back to list of accounts</a>
 <br />
 
 <p>
