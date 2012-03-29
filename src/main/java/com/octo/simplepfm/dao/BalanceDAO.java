@@ -40,7 +40,7 @@ public class BalanceDAO {
 			balance = new Balance();
 			balance.setAmount(BigDecimal.ZERO);
 			logger.error("API Didn't give any balance for account " + accountId + " because : " + ex.getMessage());
-
+			logger.error("clientID :" + clientId + " accesstoken : " + accessToken);
 		}
 		return balance;
 	}
