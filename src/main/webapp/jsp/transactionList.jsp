@@ -31,7 +31,7 @@
 			<th>Account</th>
 			<th>Transaction Type</th>
 			<th>Entry Date</th>
-			<th>Value Date</th>
+			<th>Accounting Date</th>
 			<th>Label</th>
 			<th>Amount</th>
 			<th>Currency</th>
@@ -46,7 +46,7 @@
 			<td>${transaction.account}</td>
 			<td>${transaction.transactionType}</td>
 			<td>${transaction.entryDate}</td>
-			<td>${transaction.valueDate}</td>
+			<td>${transaction.accountingDate}</td>
 			<td>${transaction.label}</td>
 			<td>${transaction.amount}</td>
 			<td>${transaction.currency}</td>

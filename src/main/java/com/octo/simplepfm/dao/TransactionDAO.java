@@ -26,7 +26,7 @@ public class TransactionDAO {
 	
 	public List<Transaction> getTransactionList(String accountId, String customerId, String page) {
 		Transaction [] transactions = restTemplate.getForObject(baseUrl 
-				+ "accounts/{accountId}/transactions?client_id={clientId}&access_token={accessToken}&customer_id={customerId}&count={count}&page={page}", 
+				+ "/accounts/{accountId}/transactions?client_id={clientId}&access_token={accessToken}&customer_id={customerId}&count={count}&page={page}", 
 				Transaction[].class, accountId,clientId, accessToken, customerId, SimplePfmConstant.PAGE_SIZE, page);	
 		return Arrays.asList(transactions);
 	}

@@ -12,6 +12,10 @@ public class AccountSummary implements Serializable {
 	private String label;
 	
 	private BigDecimal amount;
+	
+	private String bic;
+	
+	private String[] iban;
 
 	public Long getAccount() {
 		return account;
@@ -35,6 +39,22 @@ public class AccountSummary implements Serializable {
 
 	public void setAmount(BigDecimal amount) {
 		this.amount = amount;
+	}
+
+	public void setBic(String bic) {
+		this.bic = bic;
+	}
+
+	public String getBic() {
+		return bic;
+	}
+
+	public void setIban(String[] iban) {
+		this.iban = iban;
+	}
+
+	public String[] getIban() {
+		return iban;
 	}
 	
 	

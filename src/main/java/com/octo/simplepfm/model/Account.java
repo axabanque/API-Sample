@@ -8,6 +8,12 @@ public class Account {
 	private String label;
 	
 	private String currency;
+	
+	private String type;
+	
+	private String[] iban;
+	
+	private String bic;
 
 	
 	public Account() {
@@ -48,6 +54,30 @@ public class Account {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setIban(String[] iban) {
+		this.iban = iban;
+	}
+
+	public String[] getIban() {
+		return iban;
+	}
+
+	public void setBic(String bic) {
+		this.bic = bic;
+	}
+
+	public String getBic() {
+		return bic;
 	}
 	
 	
