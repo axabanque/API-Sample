@@ -2,20 +2,16 @@ package com.octo.simplepfm.controllers;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.octo.simplepfm.dao.TransactionDAO;
 import com.octo.simplepfm.model.Transaction;
 
-@RequestMapping("/accounts")
+@RequestMapping("/customer/{customerId}/accounts")
 @Controller
 public class AccountController {
 
@@ -23,19 +19,12 @@ public class AccountController {
 	private TransactionDAO transactionDao;
 
 	@RequestMapping(value = "/show/{accountId}/page/{page}")
-	public ModelAndView showTransactions(@PathVariable String accountId, @PathVariable String page, HttpServletRequest request, final HttpSession httpSession) {
-		String customerId = (String) httpSession.getAttribute("customerId");
-		if (customerId != null) {
-			List<Transaction> transactionList = transactionDao.getTransactionList(accountId, customerId, page);
-			System.out.println("Customer Id : " + customerId);
-			ModelMap map = new ModelMap();
-			map.put("transactions", transactionList);
-			map.put("accountId", accountId);
-			map.put("page", page);
-			
-			return new ModelAndView("transactionList", map);
- 		} else {
- 			throw new RuntimeException("Customer Id not present in session");
- 		}
+	public String showTransactions(@PathVariable String customerId, @PathVariable String accountId, @PathVariable String page, Model model) {
+		model.addAttribute("customerId", customerId);
+		model.addAttribute("accountId", accountId);
+		model.addAttribute("page", page);
+		List<Transaction> transactionList = transactionDao.getTransactionList(accountId, customerId, page);
+		model.addAttribute("transactions", transactionList);
+		return "transactionList";
 	}
 }

@@ -25,9 +25,9 @@
 		<c:forEach items="${accounts}" var="account">
 			<tr>
 				<td>${account.label}</td>
-				<td><a href="${pageContext.request.contextPath}/accounts/show/${account.account}/page/1">${account.account}</a></td>
+				<td><a href="${pageContext.request.contextPath}/customer/${customerId}/accounts/show/${account.account}/page/1">${account.account}</a></td>
 				<td>${account.amount}</td>
-				<td><a href="${pageContext.request.contextPath}/balances/show/${account.account}">Balances in time</a></td>
+				<td><a href="${pageContext.request.contextPath}/customer/${customerId}/balances/show/${account.account}">Balances in time</a></td>
 			</tr>
 		</c:forEach>
 	</table>
